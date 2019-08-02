@@ -29,7 +29,7 @@ module.exports = function (passport, user) {
         passReqToCallback: true
     }, function (req, email, password, done) {
         var generateHash = function (password) {
-            return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+            return bCrypt.hashSync(password, bCrypt.genSaltSync(process.env.SALT_NUM), null);
         };
 
         User.findOne({ where: { email: email } }).then(function (user) {

@@ -1,9 +1,7 @@
 <h1>Signup</h1>
 <div class="card">
     <div class="card-body">
-        {{#if error}}
-            <h2>Error: {{error}}</h2>
-        {{/if}}
+        {{> messages}}
 
         <form id="signup" name="signup" method="post" action="/signup">
             <div class="form-group">

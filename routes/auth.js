@@ -1,31 +1,27 @@
+var express = require('express');
+var router = express.Router();
+var passport = require("passport");
 var authController = require("../controllers/authController.js");
+var isLoggedIn = require("../config/middleware/isLoggedIn");
 
-module.exports = function (app, passport) {
-    app.get("/signup", authController.signup);
-    app.get("/login", authController.login);
-    app.get("/logout", authController.logout);
-    app.get("/dashboard", isLoggedIn, authController.dashboard);
+router.get("/signup", authController.signup);
+router.get("/login", authController.login);
+router.get("/logout", authController.logout);
+router.get("/dashboard", isLoggedIn, authController.dashboard);
 
-    app.post("/signup", passport.authenticate("local-signup", {
-        successRedirect: "/dashboard",
-        failureRedirect: "/signup",
-        failureFlash: true
-    }));
+router.post("/signup", passport.authenticate("local-signup", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/signup",
+    failureFlash: true
+}));
 
-    app.post("/login", passport.authenticate("local-login", {
-        successRedirect: "/dashboard",
-        failureRedirect: "/login",
-        failureFlash: true
-    }));
+router.post("/login", passport.authenticate("local-login", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/login",
+    failureFlash: true
+}));
 
-    function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated()) {
-            return next(); // if logged in, execute next middleware
-        }
-
-        res.redirect("/login"); // if not logged in, redirect to /login
-    }
-}
+module.exports = router;
 
 
 
