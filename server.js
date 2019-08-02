@@ -35,16 +35,14 @@ require("./config/passport/passport.js")(passport, db.User);
 
 // sync w/database
 db.sequelize.sync()
-    .then(function () {
-        console.log("Successfully synced with db.")
+    .then(function() {
+        app.listen(PORT, function(err) {
+            if (err) {
+                return console.log(err);
+            }
+        
+            console.log(`Server now running on http://localhost:${PORT}!`);
+        });
     }).catch(function (err) {
-        console.log(err, "Something went wrong with the db sync!")
+        console.log(err, "Something went wrong with the db sync!");
     });
-
-app.listen(PORT, function(err) {
-    if (err) {
-        return console.log(err);
-    }
-
-    console.log(`Server now running on http://localhost:${PORT}!`);
-});
