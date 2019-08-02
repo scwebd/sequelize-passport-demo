@@ -24,7 +24,7 @@ app.engine("hbs", exphbs({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
 
 // passport/connect-flash middleware setup
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true })); // session secret
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

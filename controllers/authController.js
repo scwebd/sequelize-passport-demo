@@ -6,7 +6,7 @@ module.exports = {
             return res.redirect("/dashboard");
         }
 
-        res.render("signup", { error: res.locals.error });
+        res.render("signup");
     },
     login: function (req, res) {
         // if user is logged in, redirect to /dashboard
@@ -15,11 +15,10 @@ module.exports = {
             return res.redirect("/dashboard");
         }
 
-        res.render("login", { error: res.locals.error });
+        res.render("login");
     },
     dashboard: function (req, res) {
         res.render("dashboard", { 
-            successMsg: res.locals.successMsg,
             email: req.user.email,
             user: JSON.stringify(req.user, null, 2)
         });
