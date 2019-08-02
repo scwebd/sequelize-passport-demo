@@ -3,13 +3,20 @@ var flash = require("connect-flash");
 var passport = require("passport");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
-var PORT = process.env.PORT || 3000;
+var routes = require("./routes");
 var db = require("./models");
+var PORT = process.env.PORT || 3000;
 var app = express();
+
+// load passport strategies
+require("./config/passport/passport.js")(passport, db.User);
 
 // urlencoded middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// express static middleware setup
+app.use(express.static("public"));
 
 // handlebars middleware setup
 app.set("views", "./views")
@@ -19,7 +26,7 @@ app.set("view engine", ".hbs");
 // passport/connect-flash middleware setup
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 app.use(flash());
 
 app.use(function (req, res, next) {
@@ -29,17 +36,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-// main route (you would likely add a separate routes file for your non-auth routes!)
-app.get("/", function (req, res) {
-    res.render("index", { successMsg: res.locals.successMsg });
-});
-
-// auth routes
-// var authRoutes = require("./routes/auth.js")(app, passport);
-app.use('/', require("./routes/auth"));
-
-// load passport strategies
-require("./config/passport/passport.js")(passport, db.User);
+// all routes, including auth and API routes
+app.use(routes);
 
 // sync w/database
 db.sequelize.sync()

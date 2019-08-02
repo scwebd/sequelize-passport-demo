@@ -21,7 +21,8 @@ module.exports = {
         console.log(req.user)
         res.render("dashboard", { 
             successMsg: res.locals.successMsg,
-            email: req.user.email
+            email: req.user.email,
+            user: JSON.stringify(req.user, null, 2)
         });
     },
     logout: function (req, res) {

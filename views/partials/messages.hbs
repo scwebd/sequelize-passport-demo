@@ -1,3 +1,4 @@
+{{!-- general flash messages --}}
 {{#if successMsg}}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ successMsg }}
@@ -7,6 +8,7 @@
     </div>
 {{/if}}
 
+{{!-- general error messages --}}
 {{#if errorMsg}}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         {{ errorMsg }}
@@ -16,6 +18,7 @@
     </div>
 {{/if}}
 
+{{!-- passport-specific error messages --}}
 {{#if error}}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         {{ error }}
