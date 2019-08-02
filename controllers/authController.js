@@ -18,7 +18,6 @@ module.exports = {
         res.render("login", { error: res.locals.error });
     },
     dashboard: function (req, res) {
-        console.log(req.user)
         res.render("dashboard", { 
             successMsg: res.locals.successMsg,
             email: req.user.email,

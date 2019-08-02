@@ -1,10 +1,10 @@
-const router = require("express").Router();
+var router = require("express").Router();
 var passport = require("passport");
 var isLoggedIn = require("../config/middleware/isLoggedIn");
 var authController = require("../controllers/authController.js");
-const apiRoutes = require("./api");
+var apiRoutes = require("./api");
 
-// Main route
+// main route
 router.get("/", function (req, res) {
     res.render("index", { successMsg: res.locals.successMsg });
 });
@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
 // database and to query external APIs)...
 router.use("/api", apiRoutes);
 
-// Auth routes
+// auth routes
 router.get("/signup", authController.signup);
 router.get("/login", authController.login);
 router.get("/logout", authController.logout);
