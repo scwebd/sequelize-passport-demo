@@ -1,4 +1,4 @@
-# Sequelize Passport Example
+# Sequelize Passport Demo
 This repo utilizes the same structure as we use in The DU Coding Boot Camp, and demonstrates basic MVC. It uses the PassportJS localStrategy for user authentication.
 
 ## Getting Started
