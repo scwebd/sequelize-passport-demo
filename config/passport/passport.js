@@ -35,6 +35,8 @@ module.exports = function (passport, user) {
         User.findOne({ where: { email: email } }).then(function (user) {
             if (user) {
                 return done(null, false, { message: "Email address already in use" });
+            } else if (password !== req.body.password2) {
+                return done(null, false, { message: "Password do not match" });
             } else {
                 var userPassword = generateHash(password);
                 var data = {
