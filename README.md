@@ -1,5 +1,9 @@
 # Sequelize Passport Demo
-This repo utilizes the same structure as we use in The DU Coding Boot Camp, and demonstrates basic MVC. It uses the PassportJS localStrategy for user authentication.
+This repo utilizes the same structure as we use in The DU Coding Boot Camp, and demonstrates basic MVC architecture. It uses the PassportJS localStrategy for user authentication.
+
+This authentication would be suitable for Project #2 or Project #3. Customizing the code within assumes comfort with Node/Express/Handlebars/Sequelize. Consider augmenting the functionality to work with a username rather than an email address, or to require multiple password character types/greater complexity.
+
+The existing routes/controllers structure can be preserved and application-specific routes can be added. See the comments in the '/routes/' folder for further guidance on this. 
 
 ## Getting Started
 
