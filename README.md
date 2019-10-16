@@ -18,6 +18,7 @@ This repo utilizes the same structure as we use in The DU Coding Boot Camp, and 
     DB_HOST=localhost
     DB_PORT=8889
     ```
+* Note: you will need to populate the `.env` referenced above with the values you use with MySQL. Use the values you used in class for DB_PASSWORD, DB_PORT, etc.
 * Run `node server.js` to start the app.
 
 ### Deployment

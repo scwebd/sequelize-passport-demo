@@ -29,6 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// making flash messages available to front-end
 app.use(function (req, res, next) {
     res.locals.successMsg = req.flash("successMsg");
     res.locals.errorMsg = req.flash("errorMsg");
@@ -42,6 +43,7 @@ app.use(routes);
 // sync w/database
 db.sequelize.sync()
     .then(function () {
+        // ...then start web server
         app.listen(PORT, function (err) {
             if (err) {
                 return console.log(err);
